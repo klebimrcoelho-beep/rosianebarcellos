@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rosiane Barcellos — Psicanalista</title>
+  <meta name="description"
+    content="Sou Rosiane Barcellos, psicanalista dedicada a ajudar pessoas a se escutarem e lidarem com questões emocionais. Atendo crianças, jovens e adultos — online e presencial." />
+  <meta name="keywords" content="psicanalista, psicanálise, terapia, lutos, vínculos, repetições, atendimento online" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Rosiane Barcellos — Psicanalista" />
+  <meta property="og:description"
+    content="Um espaço de escuta ética, sigilosa e responsável. Quando o que insiste se repete, há algo que precisa ser escutado." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://rosianebarcellos.com/" />
+
+  <!-- Fonts: Cormorant Garamond (serifa elegante) + DM Sans (sans-serif limpa) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Cormorant:ital,wght@1,300;1,400&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+</head>
+
+<body>
+
+  <!-- ══════════════════════════════════════════════════════
+       FUNDO ATMOSFÉRICO GLOBAL
+  ══════════════════════════════════════════════════════ -->
+  <div class="site-bg" aria-hidden="true">
+    <div class="site-bg__glow"></div>
+    <div class="site-bg__streak"></div>
+    <div class="site-bg__vignette"></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       MOBILE NAV
+  ══════════════════════════════════════════════════════ -->
+  <div class="mobile-overlay" id="mobileOverlay" aria-hidden="true"></div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Menu mobile">
+    <button class="mobile-nav__close" id="mobileClose" aria-label="Fechar menu">✕</button>
+    <ul class="mobile-nav__links">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#abordagem">Abordagem</a></li>
+      <li><a href="#sessoes">Sessões</a></li>
+      <li><a href="#faq">Perguntas</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <a href="https://wa.me/5527997019955" target="_blank" rel="nofollow" class="btn btn-primary btn-lg"
+      style="margin-top: auto;">
+      Agendar sessão
+    </a>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════════════════════ -->
+  <header class="nav" id="mainNav" role="banner">
+    <div class="nav__inner">
+      <a href="#" class="nav__logo" aria-label="Rosiane Barcellos — Início">
+        <img src="assets/images/a_psicana-lise_a-c-_em_essaanc_57f64bc68682.png"
+          alt="Logo Rosiane Barcellos" width="36" height="36" />
+        <div>
+          Rosiane Barcellos
+          <span>Psicanalista</span>
+        </div>
+      </a>
+      <ul class="nav__links" role="list">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#abordagem">Abordagem</a></li>
+        <li><a href="#sessoes">Sessões</a></li>
+        <li><a href="#faq">Perguntas</a></li>
+      </ul>
+
+      <button class="nav__hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false"
+        aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ══════════════════════════════════════════════════════
+         DOBRA 1 — HERO
+    ══════════════════════════════════════════════════════ -->
+    <section class="hero" id="inicio" aria-label="Hero">
+      <div class="hero__bg" aria-hidden="true">
+        <img src="assets/images/site-rosiane-8-aRJJrCat0L3acEd_baf1157f73de.png"
+          alt="Ambiente acolhedor do consultório de Rosiane Barcellos" loading="eager" fetchpriority="high" />
+        <div class="hero__overlay"></div>
+        <div class="hero__ambient"></div>
+      </div>
+
+      <div class="hero__content">
+        <div class="hero__inner">
+          <h1 class="hero__title animate-word delay-0">
+            Quando o que insiste se repete,<br>
+            <em>há algo que precisa ser escutado.</em>
+          </h1>
+
+          <div class="hero__badge animate-fade delay-200">
+            <span class="hero__badge-dot"></span>
+            Agenda aberta · Online &amp; Presencial
+          </div>
+
+          <div class="hero__actions animate-reveal delay-300">
+            <a href="https://wa.me/5527997019955" target="_blank" rel="nofollow" class="btn-shimmer"
+              id="hero-cta-primary">
+              <span class="btn-shimmer__inner" style="background: var(--color-bg-dark); color: var(--color-text-primary);">
+                <span class="btn-shimmer__flash"></span>
+                Agendar sessão
+              </span>
+            </a>
+            <a href="#sobre" class="btn btn-outline btn-lg" id="hero-cta-secondary">
+              Conhecer o trabalho
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__scroll" aria-hidden="true">
+        <div class="hero__scroll-line"></div>
+        <span>Rolar</span>
+      </div>
+
+      <div class="hero__divider" aria-hidden="true">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+          <path class="shape-fill" d="M0,120 L0,0 C480,120 960,120 1440,0 L1440,120 Z"></path>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         DOBRA 2 — SOBRE MIM
+    ══════════════════════════════════════════════════════ -->
+    <section class="section" id="sobre" aria-labelledby="sobre-titulo">
+      <!-- Background Aura Effects -->
+      <div class="sobre-orb-1" aria-hidden="true"></div>
+      <div class="sobre-orb-2" aria-hidden="true"></div>
+      <div class="sobre-interference" aria-hidden="true"></div>
+      <div class="sobre-interference-reverse" aria-hidden="true"></div>
+      <div class="sobre-beam" aria-hidden="true"></div>
+      
+      <div class="container">
+        <div class="about-grid">
+
+          <div class="about-photo animate-on-scroll">
+            <div style="position: relative;">
+              <div class="about-photo__frame">
+                <img src="assets/images/whatsapp-image-2026-02-15-at-1_9176f972c679.jpeg"
+                  alt="Rosiane Barcellos, psicanalista" loading="lazy" />
+              </div>
+              <div class="about-photo__border" aria-hidden="true"></div>
+              <div class="about-photo__accent" aria-hidden="true"></div>
+            </div>
+
+            <div class="quote-block animate-on-scroll">
+              <p class="quote-block__text">
+                "A análise é um processo singular, sustentado pelo tempo, pela palavra e pela responsabilidade clínica."
+              </p>
+            </div>
+          </div>
+
+          <div class="about-content">
+            <span class="section__eyebrow animate-on-scroll">Sobre mim</span>
+            <div style="overflow: hidden; padding-bottom: 5px;">
+              <h2 class="section__title heading-underline text-clip-anim animate-on-scroll" id="sobre-titulo" style="justify-content: flex-start;">
+                <span style="animation-delay: 0.0s;">Rosiane</span>
+                <span style="animation-delay: 0.15s;">Barcellos</span>
+              </h2>
+            </div>
+
+            <div class="animate-on-scroll" style="transition-delay: 0.3s;">
+              <p>
+                Minha formação inicial é na área da educação, com graduação em Pedagogia e
+                especializações em Psicopedagogia Clínica e Institucional e Clínica Psicanalítica
+                do Autismo. Ao longo desse percurso, meu interesse pelo funcionamento do psiquismo
+                humano me conduziu à formação em Psicanálise, iniciada em 2019.
+              </p>
+              <p>
+                Na clínica, trabalho com crianças, jovens e adultos, acolhendo demandas diversas,
+                especialmente aquelas relacionadas a lutos, repetições e vínculos.
+              </p>
+              <p>
+                Meu compromisso é oferecer um espaço de escuta ética, sigilosa e responsável,
+                onde cada sujeito possa investigar sua própria história e elaborar aquilo que
+                insiste em retornar como sofrimento.
+              </p>
+            </div>
+
+            <div style="margin-top: var(--space-10); display: flex; justify-content: center;" class="animate-on-scroll" style="transition-delay: 0.5s;">
+              <a href="https://api.whatsapp.com/send?phone=5527997019955" target="_blank" rel="nofollow" class="btn-shimmer" id="sobre-cta">
+                <span class="btn-shimmer__inner">
+                  <span class="btn-shimmer__flash"></span>
+                  Saiba mais
+                </span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Transition Between Sections -->
+    <div class="transition-zone" aria-hidden="true">
+      <div class="transition-beam"></div>
+      <div class="transition-star">✦</div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         DOBRA 3 — MINHA ABORDAGEM
+    ══════════════════════════════════════════════════════ -->
+    <section class="section section--alt" id="abordagem" aria-labelledby="abordagem-titulo">
+      <div class="abordagem-bg-grid" aria-hidden="true"></div>
+      <div class="abordagem-glow" aria-hidden="true"></div>
+      <div class="container" style="position: relative; z-index: 5;">
+
+        <div class="approach-intro">
+          <span class="section__eyebrow animate-on-scroll">Minha abordagem</span>
+          <h2 class="section__title heading-underline text-clip-anim animate-on-scroll" id="abordagem-titulo" style="text-align: center;">
+            <span style="animation-delay: 0.0s;">A</span> 
+            <span style="animation-delay: 0.1s;">Psicanálise</span> 
+            <span style="animation-delay: 0.2s;">como</span> 
+            <span style="animation-delay: 0.3s;">método</span> 
+            <span style="animation-delay: 0.4s;">de</span> 
+            <span style="animation-delay: 0.5s;">escuta</span>
+          </h2>
+          <p class="section__lead animate-text-words animate-on-scroll" data-start-delay="0.4" style="text-align: center; margin: 0 auto var(--space-8);">
+            A Psicanálise é um método de escuta que busca compreender o que se manifesta como sofrimento na
+            vida do sujeito. Não se trata de aconselhamento ou orientação direta, mas de um trabalho
+            de investigação da própria história, das repetições que se apresentam nos vínculos e dos
+            lutos que permanecem sem elaboração.
+          </p>
+          <p class="section__lead animate-text-words animate-on-scroll" data-start-delay="1.2" style="text-align: center; margin: 0 auto;">
+            Através da palavra, experiências que antes retornavam como angústia ou sintoma podem
+            ser simbolizadas e compreendidas. Cada processo é singular. Não há fórmulas prontas.
+            Há tempo, escuta e responsabilidade clínica.
+          </p>
+        </div>
+
+        <div class="ornament animate-on-scroll">— ✦ —</div>
+
+        <h3 class="animate-on-scroll"
+          style="font-family: var(--font-sans); font-size: var(--text-sm); font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent); text-align: center; margin-bottom: var(--space-8);">
+          O que pode ser trabalhado na análise
+        </h3>
+
+        <p class="animate-on-scroll"
+          style="text-align: center; font-size: var(--text-md); color: var(--color-text-secondary); max-width: 640px; margin: 0 auto var(--space-10); line-height: 1.75;">
+          A análise pode auxiliar em diferentes formas de sofrimento. Abaixo, destaco alguns
+          eixos que atravessam grande parte das demandas clínicas:
+        </p>
+
+        <div class="approach-grid">
+
+          <div class="card flashlight-card animate-on-scroll" id="card-lutos">
+            <div class="card__icon">◌</div>
+            <div class="card__title">Lutos</div>
+            <p class="card__body">
+              O luto não se refere apenas à perda de alguém. Pode surgir em separações, rupturas,
+              mudanças ou expectativas que não se realizaram.
+              <br><br>
+              Quando a dor persiste ou retorna como angústia e vazio, a análise oferece um espaço
+              para elaborar essas perdas e permitir que encontrem palavras.
+            </p>
+          </div>
+
+          <div class="card flashlight-card animate-on-scroll" id="card-repeticoes">
+            <div class="card__icon">↺</div>
+            <div class="card__title">Repetições</div>
+            <p class="card__body">
+              Certas situações parecem se repetir ao longo da vida: nos vínculos, nas escolhas
+              ou nos conflitos.
+              <br><br>
+              A repetição não é falta de esforço, mas pode indicar algo ainda não compreendido.
+              A análise investiga aquilo que insiste em retornar, buscando torná-lo consciente
+              e elaborável.
+            </p>
+          </div>
+
+          <div class="card flashlight-card animate-on-scroll" id="card-vinculos">
+            <div class="card__icon">◎</div>
+            <div class="card__title">Vínculos</div>
+            <p class="card__body">
+              Os vínculos marcam profundamente a forma como cada sujeito se relaciona.
+              Dificuldades podem aparecer como medo de abandono, dependência ou conflitos
+              recorrentes.
+              <br><br>
+              Na análise, é possível compreender como esses laços foram constituídos e como
+              atuam no presente.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="approach-closing animate-on-scroll">
+          <p>
+            "Se alguma dessas experiências ressoa com você,<br>
+            a análise pode ser um caminho de elaboração."
+          </p>
+          <a href="https://api.whatsapp.com/send?phone=5527997019955" target="_blank" rel="nofollow"
+            class="btn-shimmer" id="abordagem-cta">
+            <span class="btn-shimmer__inner" style="background: var(--color-text-primary); color: var(--color-bg-dark);">
+              <span class="btn-shimmer__flash"></span>
+              Iniciar atendimento
+            </span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Transition Between Sections -->
+    <div class="transition-zone" aria-hidden="true">
+      <div class="transition-beam"></div>
+      <div class="transition-star">✦</div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         DOBRA 4 — COMO FUNCIONAM AS SESSÕES
+    ══════════════════════════════════════════════════════ -->
+    <section class="section section--alt" id="sessoes" aria-labelledby="sessoes-titulo" style="position: relative; overflow: hidden;">
+      <div class="sessoes-glow-bg" aria-hidden="true"></div>
+      <div class="sessoes-bg-stripes" aria-hidden="true"></div>
+      
+      <div class="container" style="position: relative; z-index: 5;">
+        <div style="text-align: center; margin-bottom: var(--space-16);">
+          <span class="section__eyebrow animate-on-scroll">Como funciona</span>
+          <h2 class="section__title heading-underline text-clip-anim animate-on-scroll" id="sessoes-titulo" style="justify-content: center;">
+            <span style="animation-delay: 0.0s;">A</span>
+            <span style="animation-delay: 0.1s;">Dinâmica</span>
+            <span style="animation-delay: 0.2s;">das</span>
+            <span style="animation-delay: 0.3s;">Sessões</span>
+          </h2>
+        </div>
+
+        <div class="sessoes-bento">
+          
+          <!-- Card 1: Duração -->
+          <div class="card flashlight-card animate-on-scroll sessoes-card-duracao delay-0">
+            <div class="card__icon" style="font-size: 1.6rem; font-family: var(--font-sans);">⏱</div>
+            <h3 class="card__title">50 Minutos</h3>
+            <p class="card__desc">A análise acontece por meio de sessões individuais, garantindo tempo e espaço para que o percurso analítico se desenvolva com o rigor que a clínica exige.</p>
+          </div>
+
+          <!-- Card 2: Primeiro Encontro -->
+          <div class="card flashlight-card animate-on-scroll sessoes-card-encontro delay-100">
+            <div class="card__icon" style="font-size: 1.6rem; font-family: var(--font-sans);">🤝</div>
+            <h3 class="card__title">O Primeiro Encontro</h3>
+            <p class="card__desc">Momento de conversar sobre sua demanda e alinhar como o processo acontece — estabelecendo fundamentos como a frequência das sessões, valores e arranjos iniciais.</p>
+          </div>
+
+          <!-- Card 3: Modalidades -->
+          <div class="card flashlight-card animate-on-scroll sessoes-card-modalidade delay-200">
+            <div class="card__icon" style="font-size: 1.6rem; font-family: var(--font-sans);">💻</div>
+            <h3 class="card__title" style="margin-bottom: var(--space-4);">On-line ou Presencial</h3>
+            <p class="card__desc" style="margin-bottom: var(--space-8);">Os atendimentos ocorrem na modalidade que melhor atender às necessidades do processo e à disponibilidade mútua.</p>
+            
+            <div style="width: 100%; border-radius: var(--radius-lg); overflow: hidden; position: relative; aspect-ratio: 16/9; border: 1px solid var(--color-border-dark);">
+              <img src="assets/images/chatgpt-image-1-de-mar_b6e8fc8a7283.png" alt="Ambiente de atendimento" style="width: 100%; height: 100%; object-fit: cover; filter: saturate(0.8) brightness(0.9);" loading="lazy" />
+              <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(30,18,11,0.8), transparent 70%);"></div>
+            </div>
+          </div>
+
+          <!-- Card 4: O Espaço da Palavra -->
+          <div class="card flashlight-card animate-on-scroll sessoes-card-espaco delay-300">
+            <div style="display: flex; gap: var(--space-6); align-items: flex-start;">
+              <div class="card__icon" style="font-size: 1.6rem; color: var(--color-text-primary); font-family: var(--font-sans); background: rgba(212, 184, 150, 0.1); border-color: rgba(212, 184, 150, 0.2); flex-shrink: 0;">✧</div>
+              <div>
+                <h3 class="card__title" style="font-size: 1.5rem; color: var(--color-accent); margin-bottom: 1rem;">O Espaço da Palavra</h3>
+                <p class="card__body" style="font-size: 1rem; color: var(--color-text-secondary);">
+                  A sessão é o lugar dedicado à escuta e à palavra livre. Cada encontro se constrói a partir do que se apresenta, sem julgamentos ou direcionamentos prontos. Permitindo desdobrar aquilo que insiste em repetir e ampliar a compreensão sobre si mesmo.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5: Quote -->
+          <div class="animate-on-scroll sessoes-card-quote delay-400">
+            <div class="sessoes-quote-beam"></div>
+            <div style="position: relative; z-index: 2; width: 100%;">
+              <p class="quote-block__text" style="font-size: clamp(1.2rem, 3vw, 1.5rem); color: var(--color-text-primary); line-height: 1.5; font-weight: var(--weight-regular);">
+                "Este é um espaço pensado para quem deseja compreender melhor sua própria experiência e elaborar os desafios que atravessam sua história."
+              </p>
+              <div class="quote-block__author" style="margin-top: var(--space-6); font-weight: var(--weight-medium); color: var(--color-accent);">— Rosiane Barcellos</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="transition-wrapper" aria-hidden="true">
+      <div class="transition-line">
+        <div class="transition-beam"></div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         DOBRA 5 — PERGUNTAS FREQUENTES
+    ══════════════════════════════════════════════════════ -->
+    <section class="section section--alt" id="faq" aria-labelledby="faq-titulo">
+      <div class="container">
+        <div class="faq-layout">
+
+          <div class="faq-sidebar animate-on-scroll">
+            <span class="section__eyebrow">Dúvidas</span>
+            <h2 class="section__title heading-underline" id="faq-titulo">
+              Perguntas frequentes
+            </h2>
+            <p>
+              Reuni aqui as dúvidas mais comuns antes de iniciar um processo analítico.
+              Se sua pergunta não estiver aqui, fique à vontade para me contatar.
+            </p>
+            <div style="margin-top: var(--space-8);">
+              <a href="https://wa.me/5527997019955" target="_blank" rel="nofollow" class="btn btn-outline" id="faq-cta">
+                Tirar outra dúvida
+              </a>
+            </div>
+          </div>
+
+          <div class="accordion animate-on-scroll" id="faq-accordion" role="list">
+
+            <div class="accordion__item" role="listitem">
+              <button class="accordion__trigger" aria-expanded="false" id="faq-q1">
+                Como agendar uma sessão?
+                <svg class="accordion__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"
+                  aria-hidden="true">
+                  <path d="M3 6l5 5 5-5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </button>
+              <div class="accordion__body" role="region" aria-labelledby="faq-q1">
+                <div class="accordion__content">
+                  Clique no botão "Agendar sessão". Você será direcionado a uma conversa
+                  comigo no WhatsApp, onde alinharemos horário e demais detalhes.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion__item" role="listitem">
+              <button class="accordion__trigger" aria-expanded="false" id="faq-q2">
+                Qual é a frequência das sessões?
+                <svg class="accordion__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"
+                  aria-hidden="true">
+                  <path d="M3 6l5 5 5-5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </button>
+              <div class="accordion__body" role="region" aria-labelledby="faq-q2">
+                <div class="accordion__content">
+                  Geralmente, as sessões são semanais, mas podemos ajustar conforme necessário
+                  dentro do processo analítico.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion__item" role="listitem">
+              <button class="accordion__trigger" aria-expanded="false" id="faq-q3">
+                É normal me sentir inseguro(a) nas primeiras sessões?
+                <svg class="accordion__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"
+                  aria-hidden="true">
+                  <path d="M3 6l5 5 5-5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </button>
+              <div class="accordion__body" role="region" aria-labelledby="faq-q3">
+                <div class="accordion__content">
+                  Sim, é completamente normal. Falar sobre si mesmo pode parecer desafiador
+                  no início, mas com o tempo, o espaço se torna mais confortável e natural.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion__item" role="listitem">
+              <button class="accordion__trigger" aria-expanded="false" id="faq-q4">
+                Preciso falar sobre tudo?
+                <svg class="accordion__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"
+                  aria-hidden="true">
+                  <path d="M3 6l5 5 5-5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </button>
+              <div class="accordion__body" role="region" aria-labelledby="faq-q4">
+                <div class="accordion__content">
+                  Não é necessário falar sobre tudo, apenas sobre aquilo que você se sente
+                  à vontade. O que for importante será abordado no momento certo, sem pressões.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion__item" role="listitem">
+              <button class="accordion__trigger" aria-expanded="false" id="faq-q5">
+                Qual a forma de pagamento?
+                <svg class="accordion__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"
+                  aria-hidden="true">
+                  <path d="M3 6l5 5 5-5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </button>
+              <div class="accordion__body" role="region" aria-labelledby="faq-q5">
+                <div class="accordion__content">
+                  O pagamento é realizado via Pix após finalizar a sessão.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion__item" role="listitem">
+              <button class="accordion__trigger" aria-expanded="false" id="faq-q6">
+                As sessões são confidenciais?
+                <svg class="accordion__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"
+                  aria-hidden="true">
+                  <path d="M3 6l5 5 5-5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </button>
+              <div class="accordion__body" role="region" aria-labelledby="faq-q6">
+                <div class="accordion__content">
+                  Sim. Tudo o que é compartilhado nas sessões é protegido por sigilo ético
+                  e profissional.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         DOBRA 6 — CTA / CONTATO
+    ══════════════════════════════════════════════════════ -->
+    <section class="cta-section" id="contato" aria-labelledby="contato-titulo">
+      <div class="container">
+        <div class="cta-card animate-on-scroll flashlight-card" id="cta-card">
+          <div class="cta-card__ambient" aria-hidden="true"></div>
+          <div class="ornament" style="margin-bottom: var(--space-6);">— ✦ —</div>
+          <h2 class="text-gradient" id="contato-titulo">
+            Meu espaço é também o seu
+          </h2>
+          <p>
+            Este é um espaço pensado para quem deseja compreender melhor sua própria
+            experiência. Um lugar de escuta, sem julgamentos, onde o que insiste em
+            retornar pode finalmente encontrar palavras.
+          </p>
+          <div class="cta-card__actions">
+            <a href="https://wa.me/5527997019955" target="_blank" rel="nofollow" class="btn btn-primary btn-lg"
+              id="contato-cta-primary">
+              Agendar sessão via WhatsApp
+            </a>
+            <a href="https://www.instagram.com/psi.rosianebarcellos/" target="_blank" rel="nofollow"
+              class="btn btn-outline" id="contato-cta-instagram">
+              Ver Instagram
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════════ -->
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+
+        <div>
+          <div class="footer-logo">
+            Rosiane Barcellos
+            <span>Psicanalista</span>
+          </div>
+          <p class="footer-tagline">
+            Um espaço de escuta ética, sigilosa e responsável. Atendimento online e presencial.
+          </p>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/psi.rosianebarcellos/" target="_blank" rel="nofollow"
+              aria-label="Instagram de Rosiane Barcellos" title="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="https://wa.me/5527997019955" target="_blank" rel="nofollow"
+              aria-label="WhatsApp de Rosiane Barcellos" title="WhatsApp">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Navegação</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="#sobre">Sobre mim</a></li>
+            <li><a href="#abordagem">Minha abordagem</a></li>
+            <li><a href="#sessoes">Como funcionam as sessões</a></li>
+            <li><a href="#faq">Perguntas frequentes</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Contato</h3>
+          <ul class="footer-links" role="list">
+            <li>
+              <a href="https://wa.me/5527997019955" target="_blank" rel="nofollow">
+                (27) 99701-9955
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/psi.rosianebarcellos/" target="_blank" rel="nofollow">
+                @psi.rosianebarcellos
+              </a>
+            </li>
+          </ul>
+          <div style="margin-top: var(--space-8);">
+            <a href="https://wa.me/5527997019955" target="_blank" rel="nofollow" class="btn btn-glow" id="footer-cta">
+              Agendar sessão
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2025 Rosiane Barcellos — Psicanalista. Todos os direitos reservados.</span>
+        <span style="font-family: var(--font-serif); font-style: italic; color: var(--color-text-subtle);">
+          "Cada processo é singular."
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════════════════════
+       JAVASCRIPT
+  ══════════════════════════════════════════════════════ -->
+  <script src="assets/js/main.js" defer></script>
+
+
+</body>
+
+</html>

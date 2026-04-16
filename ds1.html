@@ -1,0 +1,1934 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design System — Rosiane Barcellos | Psicanalista</title>
+  <meta name="description" content="Sistema de design oficial do site da psicanalista Rosiane Barcellos. Documenta tipografia, cores, componentes UI, animações e espaçamento." />
+
+  <!-- Fonts: Cormorant Garamond (serifa elegante) + DM Sans (sans-serif limpa) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Cormorant:ital,wght@1,300;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ═══════════════════════════════════════════════════════
+       1. DESIGN TOKENS — CSS CUSTOM PROPERTIES
+    ═══════════════════════════════════════════════════════ */
+    :root {
+      /* ── Paleta de Cores ── */
+      --color-bg-light:       #b4a497;   /* Fundo claro */
+      --color-bg-dark:        #584335;   /* Fundo escuro */
+      --color-bg-darkest:     #3e2d23;   /* Fundo mais escuro (sombra/overlay) */
+      --color-bg-mid:         #7a6152;   /* Tom intermediário */
+      --color-bg-surface:     #c8bab1;   /* Superfície elevada (claro) */
+      --color-bg-glass:       rgba(88, 67, 53, 0.6); /* Glassmorphism escuro */
+      --color-bg-glass-light: rgba(180, 164, 151, 0.4);
+
+      /* ── Texto ── */
+      --color-text-primary:   #f5efe8;   /* Branco quente principal */
+      --color-text-secondary: #e8ddd5;   /* Secundário levemente acastanhado */
+      --color-text-muted:     #c4b5a9;   /* Texto suave */
+      --color-text-subtle:    #a08f83;   /* Texto bem suave */
+      --color-text-dark:      #2c1d15;   /* Texto escuro (sobre fundo claro) */
+      --color-text-dark-muted:#5a3f30;   /* Texto secundário (sobre fundo claro) */
+
+      /* ── Acento / Bordas ── */
+      --color-accent:         #d4b896;   /* Dourado arenoso */
+      --color-accent-glow:    rgba(212, 184, 150, 0.3);
+      --color-border-light:   rgba(245, 239, 232, 0.15);
+      --color-border-dark:    rgba(245, 239, 232, 0.06);
+      --color-border-accent:  rgba(212, 184, 150, 0.4);
+
+      /* ── Tipografia ── */
+      --font-serif:  'Cormorant Garamond', 'Georgia', serif;
+      --font-sans:   'DM Sans', 'system-ui', sans-serif;
+      --font-italic: 'Cormorant', serif;
+
+      /* ── Escala Tipográfica ── */
+      --text-xs:      0.75rem;    /* 12px */
+      --text-sm:      0.875rem;   /* 14px */
+      --text-base:    1rem;       /* 16px */
+      --text-md:      1.125rem;   /* 18px */
+      --text-lg:      1.25rem;    /* 20px */
+      --text-xl:      1.5rem;     /* 24px */
+      --text-2xl:     2rem;       /* 32px */
+      --text-3xl:     2.5rem;     /* 40px */
+      --text-4xl:     3.25rem;    /* 52px */
+      --text-5xl:     4.5rem;     /* 72px */
+      --text-6xl:     6rem;       /* 96px */
+
+      /* ── Peso das Fontes ── */
+      --weight-light:   300;
+      --weight-regular: 400;
+      --weight-medium:  500;
+      --weight-semibold:600;
+
+      /* ── Espaçamento ── */
+      --space-1:   0.25rem;
+      --space-2:   0.5rem;
+      --space-3:   0.75rem;
+      --space-4:   1rem;
+      --space-5:   1.25rem;
+      --space-6:   1.5rem;
+      --space-8:   2rem;
+      --space-10:  2.5rem;
+      --space-12:  3rem;
+      --space-16:  4rem;
+      --space-20:  5rem;
+      --space-24:  6rem;
+      --space-32:  8rem;
+      --space-40:  10rem;
+
+      /* ── Bordas ── */
+      --radius-sm:   4px;
+      --radius-md:   8px;
+      --radius-lg:   12px;
+      --radius-xl:   20px;
+      --radius-2xl:  32px;
+      --radius-full: 9999px;
+
+      /* ── Sombras ── */
+      --shadow-sm:  0 2px 8px rgba(30, 18, 11, 0.25);
+      --shadow-md:  0 8px 24px rgba(30, 18, 11, 0.3);
+      --shadow-lg:  0 20px 48px rgba(30, 18, 11, 0.35);
+      --shadow-glow: 0 0 40px rgba(212, 184, 150, 0.2);
+
+      /* ── Transições ── */
+      --transition-fast:   150ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow:   600ms cubic-bezier(0.16, 1, 0.3, 1);
+
+      /* ── Z-index ── */
+      --z-base:    0;
+      --z-above:   10;
+      --z-overlay: 20;
+      --z-modal:   30;
+      --z-nav:     50;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       2. RESET & BASE
+    ═══════════════════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--color-bg-dark);
+      color: var(--color-text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Scrollbar personalizada */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--color-bg-darkest); }
+    ::-webkit-scrollbar-thumb { background: var(--color-bg-mid); border-radius: var(--radius-full); }
+    ::-webkit-scrollbar-thumb:hover { background: var(--color-accent); }
+
+    /* Seleção de texto */
+    ::selection { background: rgba(212, 184, 150, 0.25); color: var(--color-text-primary); }
+
+    /* ═══════════════════════════════════════════════════════
+       3. ANIMAÇÕES (KEYFRAMES)
+    ═══════════════════════════════════════════════════════ */
+
+    /* Entrada suave para cima */
+    @keyframes revealUp {
+      0%   { opacity: 0; transform: translateY(20px); filter: blur(3px); }
+      100% { opacity: 1; transform: translateY(0);    filter: blur(0); }
+    }
+
+    /* Entrada com fade puro */
+    @keyframes fadeIn {
+      0%   { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    /* Pulso suave (breathing) */
+    @keyframes subtlePulse {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50%       { opacity: 0.65; transform: scale(1.04); }
+    }
+
+    /* Deriva horizontal lenta */
+    @keyframes driftH {
+      0%   { transform: translateX(-8%) translateY(0); opacity: 0.3; }
+      50%  { transform: translateX(8%)  translateY(1.5%); opacity: 0.5; }
+      100% { transform: translateX(-8%) translateY(0); opacity: 0.3; }
+    }
+
+    /* Rotação muito lenta */
+    @keyframes slowRotate {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* Shimmer de loading */
+    @keyframes shimmer {
+      0%   { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    /* Ondulação de bordas (border beam) */
+    @keyframes borderBeam {
+      0%   { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    /* Entrada de palavras (word reveal) */
+    @keyframes wordReveal {
+      0%   { opacity: 0; transform: translateY(12px); filter: blur(4px); }
+      100% { opacity: 1; transform: translateY(0);    filter: blur(0); }
+    }
+
+    /* Ping (usado no badge de status) */
+    @keyframes ping {
+      0%        { transform: scale(1); opacity: 1; }
+      75%, 100% { transform: scale(2.2); opacity: 0; }
+    }
+
+
+    /* ═══════════════════════════════════════════════════════
+       4. CLASSES UTILITÁRIAS DE ANIMAÇÃO
+    ═══════════════════════════════════════════════════════ */
+    .animate-reveal {
+      animation: revealUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+      will-change: transform, opacity, filter;
+    }
+
+    .animate-word {
+      animation: wordReveal 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      opacity: 0;
+      display: inline-block;
+      will-change: transform, opacity, filter;
+    }
+
+    .animate-fade {
+      animation: fadeIn 0.8s ease-out forwards;
+      opacity: 0;
+    }
+
+    /* Classe controlada por IntersectionObserver */
+    .animate-on-scroll {
+      animation-play-state: paused !important;
+    }
+    .animate-on-scroll.in-view {
+      animation-play-state: running !important;
+    }
+
+    /* Delays padrão */
+    .delay-0   { animation-delay: 0ms; }
+    .delay-100 { animation-delay: 100ms; }
+    .delay-200 { animation-delay: 200ms; }
+    .delay-300 { animation-delay: 300ms; }
+    .delay-400 { animation-delay: 400ms; }
+    .delay-500 { animation-delay: 500ms; }
+    .delay-600 { animation-delay: 600ms; }
+    .delay-800 { animation-delay: 800ms; }
+    .delay-900 { animation-delay: 900ms; }
+    .delay-1000{ animation-delay: 1000ms; }
+
+
+    /* ═══════════════════════════════════════════════════════
+       5. EFEITOS GLASSMORPHISM
+    ═══════════════════════════════════════════════════════ */
+    .glass {
+      background: var(--color-bg-glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--color-border-light);
+    }
+
+    .glass-light {
+      background: var(--color-bg-glass-light);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(245, 239, 232, 0.2);
+    }
+
+    .glass-nav {
+      background: rgba(62, 45, 35, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--color-border-dark);
+    }
+
+
+    /* ═══════════════════════════════════════════════════════
+       6. FLASHLIGHT / MOUSE-GLOW NOS CARDS
+    ═══════════════════════════════════════════════════════ */
+    .flashlight-card {
+      position: relative;
+      --mouse-x: -999px;
+      --mouse-y: -999px;
+    }
+    .flashlight-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(500px circle at var(--mouse-x) var(--mouse-y),
+        rgba(212, 184, 150, 0.08), transparent 45%);
+      opacity: 0;
+      transition: opacity 0.5s;
+      pointer-events: none;
+      z-index: 10;
+      border-radius: inherit;
+    }
+    .flashlight-card:hover::after { opacity: 1; }
+
+
+    /* ═══════════════════════════════════════════════════════
+       7. TIPOGRAFIA
+    ═══════════════════════════════════════════════════════ */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-serif);
+      font-weight: var(--weight-light);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--color-text-primary);
+    }
+
+    p { font-family: var(--font-sans); }
+
+    .text-serif  { font-family: var(--font-serif) !important; }
+    .text-sans   { font-family: var(--font-sans) !important; }
+    .text-italic { font-family: var(--font-italic) !important; font-style: italic; }
+
+    /* Gradiente de texto */
+    .text-gradient {
+      background: linear-gradient(135deg, var(--color-text-primary) 0%, var(--color-accent) 60%, var(--color-text-muted) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Linha decorativa sob título */
+    .heading-underline {
+      position: relative;
+      display: inline-block;
+    }
+    .heading-underline::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 48px;
+      height: 1px;
+      background: var(--color-accent);
+    }
+
+
+    /* ═══════════════════════════════════════════════════════
+       8. LAYOUT DO DESIGN SYSTEM (página)
+    ═══════════════════════════════════════════════════════ */
+    .ds-page {
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Background atmosférico */
+    .ds-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+      background: var(--color-bg-dark);
+    }
+
+    .ds-bg__glow-top {
+      position: absolute;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120vw;
+      height: 80vh;
+      background: radial-gradient(ellipse at center,
+        rgba(212, 184, 150, 0.06) 0%,
+        rgba(180, 164, 151, 0.03) 40%,
+        transparent 70%);
+      animation: subtlePulse 10s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .ds-bg__streak {
+      position: absolute;
+      bottom: 15%;
+      left: -15%;
+      width: 130%;
+      height: 350px;
+      background: radial-gradient(ellipse at center,
+        rgba(180, 164, 151, 0.035) 0%,
+        transparent 70%);
+      animation: driftH 25s ease-in-out infinite;
+      transform: rotate(-3deg);
+      pointer-events: none;
+    }
+
+    .ds-bg__vignette {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, transparent 30%, rgba(30, 18, 11, 0.55) 100%);
+      pointer-events: none;
+    }
+
+    /* Navigation interna do DS */
+    .ds-nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: var(--z-nav);
+      padding: var(--space-4) var(--space-6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .ds-nav__logo {
+      font-family: var(--font-serif);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-light);
+      color: var(--color-text-primary);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .ds-nav__links {
+      display: flex;
+      gap: var(--space-6);
+      list-style: none;
+    }
+
+    .ds-nav__links a {
+      font-family: var(--font-sans);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-muted);
+      text-decoration: none;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color var(--transition-normal);
+    }
+    .ds-nav__links a:hover { color: var(--color-text-primary); }
+
+    /* Container principal do DS */
+    .ds-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+    }
+
+    /* Seções do DS */
+    .ds-section {
+      padding: var(--space-24) 0;
+      border-bottom: 1px solid var(--color-border-dark);
+    }
+
+    .ds-section:last-child { border-bottom: none; }
+
+    .ds-section__header {
+      margin-bottom: var(--space-12);
+    }
+
+    .ds-section__label {
+      font-family: var(--font-sans);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-medium);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: var(--space-3);
+      display: block;
+    }
+
+    .ds-section__title {
+      font-family: var(--font-serif);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-light);
+      color: var(--color-text-primary);
+    }
+
+    .ds-section__desc {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      margin-top: var(--space-3);
+      max-width: 540px;
+      line-height: 1.7;
+    }
+
+    /* Grid de demonstração */
+    .ds-grid {
+      display: grid;
+      gap: var(--space-6);
+    }
+    .ds-grid--2 { grid-template-columns: repeat(2, 1fr); }
+    .ds-grid--3 { grid-template-columns: repeat(3, 1fr); }
+    .ds-grid--4 { grid-template-columns: repeat(4, 1fr); }
+
+    @media (max-width: 768px) {
+      .ds-grid--2, .ds-grid--3, .ds-grid--4 { grid-template-columns: 1fr; }
+    }
+
+    /* Token card genérico */
+    .ds-token-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border-dark);
+      padding: var(--space-5);
+      background: rgba(62, 45, 35, 0.5);
+      transition: border-color var(--transition-normal), transform var(--transition-normal);
+    }
+    .ds-token-card:hover {
+      border-color: var(--color-border-accent);
+      transform: translateY(-2px);
+    }
+
+    .ds-token-name {
+      font-family: var(--font-sans);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      letter-spacing: 0.08em;
+      margin-top: var(--space-2);
+    }
+
+    .ds-token-value {
+      font-family: var(--font-sans);
+      font-size: var(--text-xs);
+      color: var(--color-accent);
+      margin-top: var(--space-1);
+    }
+
+
+    /* ═══════════════════════════════════════════════════════
+       9. COMPONENTES UI
+    ═══════════════════════════════════════════════════════ */
+
+    /* ── Botões ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      font-family: var(--font-sans);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      letter-spacing: 0.06em;
+      border: none;
+      cursor: pointer;
+      transition: all var(--transition-normal);
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    /* Botão Primário */
+    .btn-primary {
+      background: var(--color-text-primary);
+      color: var(--color-bg-dark);
+      padding: var(--space-3) var(--space-8);
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-primary:hover {
+      background: var(--color-accent);
+      box-shadow: var(--shadow-glow);
+      transform: translateY(-1px);
+    }
+    .btn-primary:active { transform: translateY(0); }
+
+    /* Botão Outline */
+    .btn-outline {
+      background: transparent;
+      color: var(--color-text-primary);
+      padding: var(--space-3) var(--space-8);
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-border-light);
+    }
+    .btn-outline:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+
+    /* Botão Ghost */
+    .btn-ghost {
+      background: transparent;
+      color: var(--color-text-muted);
+      padding: var(--space-3) var(--space-6);
+      border-radius: var(--radius-md);
+    }
+    .btn-ghost:hover {
+      background: rgba(245, 239, 232, 0.06);
+      color: var(--color-text-primary);
+    }
+
+    /* Botão Glow (CTA principal do site) */
+    .btn-glow {
+      background: linear-gradient(135deg, var(--color-bg-mid), var(--color-bg-dark));
+      color: var(--color-text-primary);
+      padding: var(--space-3) var(--space-8);
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-border-accent);
+      box-shadow: 0 8px 32px rgba(212, 184, 150, 0.15);
+    }
+    .btn-glow:hover {
+      box-shadow: 0 12px 40px rgba(212, 184, 150, 0.3);
+      transform: translateY(-2px);
+      border-color: rgba(212, 184, 150, 0.6);
+    }
+
+    /* Botão com shimmer border (efeito giratório) */
+    .btn-shimmer {
+      position: relative;
+      padding: var(--space-3) var(--space-8);
+      border-radius: var(--radius-full);
+      color: var(--color-text-primary);
+      font-family: var(--font-sans);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      cursor: pointer;
+      background: var(--color-bg-dark);
+      border: none;
+    }
+    .btn-shimmer::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: var(--radius-full);
+      background: conic-gradient(
+        from var(--angle, 0deg),
+        transparent 0deg,
+        var(--color-accent) 60deg,
+        transparent 120deg
+      );
+      animation: borderBeam 4s linear infinite;
+      animation-name: none; /* ativado por JS */
+      z-index: -1;
+    }
+    .btn-shimmer:hover::before {
+      animation-name: slowRotate;
+    }
+    .btn-shimmer::after {
+      content: '';
+      position: absolute;
+      inset: 1px;
+      border-radius: var(--radius-full);
+      background: var(--color-bg-dark);
+      z-index: -1;
+    }
+    .btn-shimmer:hover {
+      box-shadow: 0 0 20px rgba(212, 184, 150, 0.2);
+    }
+
+    /* Tamanhos */
+    .btn-sm { padding: var(--space-2) var(--space-5); font-size: var(--text-xs); }
+    .btn-lg { padding: var(--space-4) var(--space-10); font-size: var(--text-md); }
+
+
+    /* ── Cards ── */
+    .card {
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--color-border-dark);
+      padding: var(--space-8);
+      background: rgba(62, 45, 35, 0.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: border-color var(--transition-normal), transform var(--transition-slow), box-shadow var(--transition-normal);
+    }
+    .card:hover {
+      border-color: var(--color-border-accent);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .card-light {
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(180, 164, 151, 0.3);
+      padding: var(--space-8);
+      background: rgba(180, 164, 151, 0.12);
+      backdrop-filter: blur(8px);
+    }
+
+    .card__icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border-light);
+      background: rgba(245, 239, 232, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-accent);
+      font-size: 18px;
+      margin-bottom: var(--space-5);
+      transition: all var(--transition-normal);
+    }
+    .card:hover .card__icon {
+      background: rgba(212, 184, 150, 0.1);
+      border-color: var(--color-border-accent);
+    }
+
+    .card__title {
+      font-family: var(--font-serif);
+      font-size: var(--text-xl);
+      font-weight: var(--weight-light);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-2);
+    }
+
+    .card__body {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: 1.75;
+    }
+
+
+    /* ── Badge / Tag ── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+      font-family: var(--font-sans);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-medium);
+      letter-spacing: 0.05em;
+    }
+
+    .badge-subtle {
+      background: rgba(245, 239, 232, 0.06);
+      border: 1px solid var(--color-border-light);
+      color: var(--color-text-muted);
+    }
+
+    .badge-accent {
+      background: rgba(212, 184, 150, 0.12);
+      border: 1px solid var(--color-border-accent);
+      color: var(--color-accent);
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      display: inline-block;
+    }
+
+    .badge-ping {
+      position: relative;
+      display: inline-block;
+      width: 8px; height: 8px;
+    }
+    .badge-ping__inner {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: var(--color-accent);
+      opacity: 0.6;
+      animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+    .badge-ping__dot {
+      position: relative;
+      display: inline-flex;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--color-accent);
+    }
+
+
+    /* ── Inputs / Formulário ── */
+    .form-group { display: flex; flex-direction: column; gap: var(--space-2); }
+
+    .form-label {
+      font-family: var(--font-sans);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .form-input {
+      font-family: var(--font-sans);
+      font-size: var(--text-sm);
+      color: var(--color-text-primary);
+      background: rgba(62, 45, 35, 0.6);
+      border: 1px solid var(--color-border-dark);
+      border-radius: var(--radius-md);
+      padding: var(--space-3) var(--space-4);
+      outline: none;
+      transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+      width: 100%;
+    }
+    .form-input::placeholder { color: var(--color-text-subtle); }
+    .form-input:focus {
+      border-color: var(--color-border-accent);
+      box-shadow: 0 0 0 3px rgba(212, 184, 150, 0.12);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 100px;
+      font-family: var(--font-sans);
+      font-size: var(--text-sm);
+      color: var(--color-text-primary);
+      background: rgba(62, 45, 35, 0.6);
+      border: 1px solid var(--color-border-dark);
+      border-radius: var(--radius-md);
+      padding: var(--space-3) var(--space-4);
+      outline: none;
+      transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+      width: 100%;
+    }
+    .form-textarea::placeholder { color: var(--color-text-subtle); }
+    .form-textarea:focus {
+      border-color: var(--color-border-accent);
+      box-shadow: 0 0 0 3px rgba(212, 184, 150, 0.12);
+    }
+
+
+    /* ── Divisor ── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--color-border-dark);
+    }
+    .divider-accent {
+      background: linear-gradient(90deg, transparent, var(--color-border-accent), transparent);
+    }
+
+
+    /* ── Quote / Depoimento ── */
+    .quote-block {
+      border-left: 2px solid var(--color-accent);
+      padding: var(--space-5) var(--space-6);
+      background: rgba(212, 184, 150, 0.04);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    }
+    .quote-block__text {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: var(--text-xl);
+      font-weight: var(--weight-light);
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+    }
+    .quote-block__author {
+      font-family: var(--font-sans);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: var(--space-3);
+    }
+
+
+    /* ── Navigation Pill ── */
+    .nav-pill {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+      padding: var(--space-1);
+      background: rgba(62, 45, 35, 0.7);
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-border-dark);
+    }
+    .nav-pill__item {
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-full);
+      font-family: var(--font-sans);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-muted);
+      cursor: pointer;
+      transition: all var(--transition-normal);
+      border: none;
+      background: transparent;
+    }
+    .nav-pill__item:hover { color: var(--color-text-primary); }
+    .nav-pill__item.active {
+      background: rgba(245, 239, 232, 0.1);
+      color: var(--color-text-primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+
+    /* ── Avatar ── */
+    .avatar {
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid var(--color-border-accent);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-bg-mid);
+      color: var(--color-text-primary);
+      font-family: var(--font-serif);
+    }
+    .avatar-sm  { width: 32px;  height: 32px;  font-size: var(--text-sm); }
+    .avatar-md  { width: 48px;  height: 48px;  font-size: var(--text-md); }
+    .avatar-lg  { width: 72px;  height: 72px;  font-size: var(--text-2xl); }
+    .avatar-xl  { width: 96px;  height: 96px;  font-size: var(--text-3xl); }
+
+
+    /* ── Modal / Dialog ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(30, 18, 11, 0.75);
+      backdrop-filter: blur(4px);
+      z-index: var(--z-modal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity var(--transition-normal);
+      pointer-events: none;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+    .modal {
+      background: var(--color-bg-darkest);
+      border: 1px solid var(--color-border-light);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8);
+      max-width: 520px;
+      width: 90%;
+      transform: translateY(16px) scale(0.98);
+      transition: transform var(--transition-slow);
+      box-shadow: var(--shadow-lg);
+    }
+    .modal-overlay.open .modal { transform: translateY(0) scale(1); }
+
+
+    /* ── Tooltip ── */
+    .tooltip-wrap { position: relative; display: inline-flex; }
+    .tooltip {
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--color-bg-darkest);
+      border: 1px solid var(--color-border-light);
+      color: var(--color-text-secondary);
+      font-size: var(--text-xs);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-sm);
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition-fast);
+    }
+    .tooltip-wrap:hover .tooltip { opacity: 1; }
+
+
+    /* ── Accordion ── */
+    .accordion { border: 1px solid var(--color-border-dark); border-radius: var(--radius-lg); overflow: hidden; }
+
+    .accordion__item { border-bottom: 1px solid var(--color-border-dark); }
+    .accordion__item:last-child { border-bottom: none; }
+
+    .accordion__trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-5) var(--space-6);
+      font-family: var(--font-serif);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-light);
+      color: var(--color-text-primary);
+      background: rgba(62, 45, 35, 0.4);
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      transition: background var(--transition-fast);
+    }
+    .accordion__trigger:hover { background: rgba(62, 45, 35, 0.7); }
+
+    .accordion__chevron {
+      width: 16px;
+      height: 16px;
+      color: var(--color-accent);
+      transition: transform var(--transition-normal);
+      flex-shrink: 0;
+    }
+    .accordion__item.open .accordion__chevron { transform: rotate(180deg); }
+
+    .accordion__body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height var(--transition-slow);
+    }
+    .accordion__item.open .accordion__body { max-height: 300px; }
+
+    .accordion__content {
+      padding: var(--space-5) var(--space-6);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: 1.75;
+      background: rgba(30, 18, 11, 0.25);
+    }
+
+
+    /* ══════════════════════════════════════  
+       10. HERO DEMO (Mockup de seção)
+    ═══════════════════════════════════════ */
+    .hero-demo {
+      position: relative;
+      border-radius: var(--radius-2xl);
+      border: 1px solid var(--color-border-light);
+      padding: var(--space-16) var(--space-8);
+      text-align: center;
+      overflow: hidden;
+      background: rgba(30, 18, 11, 0.5);
+    }
+
+    .hero-demo__ambient {
+      position: absolute;
+      top: -40%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 120%;
+      background: radial-gradient(ellipse at center, rgba(212, 184, 150, 0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-demo__eyebrow {
+      font-family: var(--font-sans);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-medium);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: var(--space-5);
+    }
+
+    .hero-demo__title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 5vw, var(--text-5xl));
+      font-weight: var(--weight-light);
+      color: var(--color-text-primary);
+      line-height: 1.1;
+      margin-bottom: var(--space-6);
+    }
+
+    .hero-demo__subtitle {
+      font-size: var(--text-md);
+      color: var(--color-text-muted);
+      max-width: 520px;
+      margin: 0 auto var(--space-8);
+      line-height: 1.65;
+    }
+
+    .hero-demo__actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+
+    /* ═══════════════════════════════════════════════════════
+       11. SWATCHES DE COR
+    ═══════════════════════════════════════════════════════ */
+    .color-swatch {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--color-border-dark);
+    }
+    .color-swatch__preview {
+      height: 80px;
+      width: 100%;
+    }
+    .color-swatch__info {
+      padding: var(--space-3) var(--space-4);
+      background: rgba(30, 18, 11, 0.6);
+    }
+    .color-swatch__name {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-secondary);
+    }
+    .color-swatch__hex {
+      font-size: var(--text-xs);
+      color: var(--color-text-subtle);
+      margin-top: 2px;
+    }
+
+
+    /* ═══════════════════════════════════════════════════════
+       12. ESCALA DE ESPAÇAMENTO (visual)
+    ═══════════════════════════════════════════════════════ */
+    .spacing-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+    .spacing-bar {
+      height: 8px;
+      background: linear-gradient(90deg, var(--color-accent), rgba(212, 184, 150, 0.3));
+      border-radius: var(--radius-full);
+      flex-shrink: 0;
+    }
+    .spacing-label {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      width: 100px;
+      flex-shrink: 0;
+    }
+
+
+    /* ═══════════════════════════════════════════════════════
+       13. STATUS / LOADING
+    ═══════════════════════════════════════════════════════ */
+    .loading-shimmer {
+      background: linear-gradient(90deg,
+        rgba(180, 164, 151, 0.08) 25%,
+        rgba(180, 164, 151, 0.15) 50%,
+        rgba(180, 164, 151, 0.08) 75%
+      );
+      background-size: 200% 100%;
+      animation: shimmer 1.8s infinite;
+      border-radius: var(--radius-md);
+    }
+
+
+    /* ═══════════════════════════════════════════════════════
+       14. PÁGINA DO DESIGN SYSTEM — estilo de documentação
+    ═══════════════════════════════════════════════════════ */
+    .ds-demo-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .ds-demo-col {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .ds-code {
+      font-family: 'Courier New', monospace;
+      font-size: var(--text-xs);
+      color: var(--color-accent);
+      background: rgba(30, 18, 11, 0.6);
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-border-dark);
+    }
+
+    /* Separador ornamental */
+    .ornament {
+      text-align: center;
+      color: var(--color-text-subtle);
+      font-size: var(--text-xs);
+      letter-spacing: 0.5em;
+      padding: var(--space-4) 0;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       15. RESPONSIVIDADE
+    ═══════════════════════════════════════════════════════ */
+    @media (max-width: 900px) {
+      .ds-nav__links { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .ds-section { padding: var(--space-16) 0; }
+      .hero-demo { padding: var(--space-12) var(--space-5); }
+    }
+  </style>
+</head>
+<body class="ds-page">
+
+  <!-- ══════════════════════════════════════════════════════
+       FUNDO ATMOSFÉRICO
+  ══════════════════════════════════════════════════════ -->
+  <div class="ds-bg" aria-hidden="true">
+    <div class="ds-bg__glow-top"></div>
+    <div class="ds-bg__streak"></div>
+    <div class="ds-bg__vignette"></div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       NAVEGAÇÃO INTERNA DO DS
+  ══════════════════════════════════════════════════════ -->
+  <nav class="ds-nav glass-nav" id="ds-nav" role="navigation" aria-label="Índice do Design System">
+    <span class="ds-nav__logo">Rosiane Barcellos&thinsp;·&thinsp;<span style="font-weight: 300; opacity: 0.55; font-size: 0.75em; letter-spacing: 0.12em; vertical-align: middle;">DESIGN SYSTEM</span></span>
+    <ul class="ds-nav__links">
+      <li><a href="#identidade">Identidade</a></li>
+      <li><a href="#tipografia">Tipografia</a></li>
+      <li><a href="#cores">Cores</a></li>
+      <li><a href="#espacamento">Espaçamento</a></li>
+      <li><a href="#componentes">Componentes</a></li>
+      <li><a href="#animacoes">Animações</a></li>
+    </ul>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════════
+       HERO DO DS
+  ══════════════════════════════════════════════════════ -->
+  <header style="padding: 140px var(--space-6) var(--space-24); text-align: center; max-width: 800px; margin: 0 auto;" id="identidade">
+    <span class="badge badge-accent animate-reveal delay-0" style="margin-bottom: var(--space-5); display: inline-flex;">
+      <span class="badge-ping"><span class="badge-ping__inner"></span><span class="badge-ping__dot"></span></span>
+      Sistema de Design · v1.0
+    </span>
+
+    <h1 class="animate-word delay-100" style="font-family: var(--font-serif); font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 300; line-height: 1.1; color: var(--color-text-primary);">
+      Rosiane Barcellos
+    </h1>
+
+    <p class="animate-reveal delay-300" style="font-family: var(--font-serif); font-style: italic; font-size: var(--text-xl); color: var(--color-text-muted); margin-top: var(--space-3); margin-bottom: var(--space-8); letter-spacing: 0.04em;">
+      Psicanalista
+    </p>
+
+    <p class="animate-reveal delay-400" style="font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.75; max-width: 520px; margin: 0 auto;">
+      Este documento define a linguagem visual do site. Abrange paleta de cores,
+      tipografia, componentes UI, espaçamento, bordas, animações e classes CSS e JS — 
+      transmitindo <em>elegância serena</em>, <em>confiança</em> e <em>profissionalismo</em>.
+    </p>
+
+    <div class="ornament animate-fade delay-800" style="margin-top: var(--space-10);">— ✦ —</div>
+  </header>
+
+  <main class="ds-container">
+
+    <!-- ════════════════════════════════════════════════════
+         SEÇÃO: TIPOGRAFIA
+    ════════════════════════════════════════════════════ -->
+    <section class="ds-section" id="tipografia">
+      <div class="ds-section__header">
+        <span class="ds-section__label">01 — Tipografia</span>
+        <h2 class="ds-section__title heading-underline">Fontes & Escala</h2>
+        <p class="ds-section__desc">
+          Cormorant Garamond foi escolhida como fonte principal por sua elegância clássica e
+          aura erudita — ideal para um consultório de psicanalista. DM Sans complementa em
+          suporte, mantendo legibilidade e discrição.
+        </p>
+      </div>
+
+      <!-- Famílias -->
+      <div class="ds-grid ds-grid--2" style="margin-bottom: var(--space-12);">
+        <div class="ds-token-card">
+          <p style="font-family: var(--font-serif); font-size: var(--text-4xl); font-weight: 300; color: var(--color-text-primary); line-height: 1.2;">
+            Aabcde<em style="font-style: italic; opacity: 0.7;">fg</em>
+          </p>
+          <div class="ds-token-name">Cormorant Garamond — Fonte Principal (Serif)</div>
+          <div class="ds-token-value">--font-serif · Títulos, citações, destaques</div>
+        </div>
+
+        <div class="ds-token-card">
+          <p style="font-family: var(--font-sans); font-size: var(--text-3xl); font-weight: 300; color: var(--color-text-primary); line-height: 1.3;">
+            Aabcdefg
+          </p>
+          <div class="ds-token-name">DM Sans — Fonte Secundária (Sans-serif)</div>
+          <div class="ds-token-value">--font-sans · Corpo, UI, legendas</div>
+        </div>
+      </div>
+
+      <!-- Escala tipográfica -->
+      <div style="display: flex; flex-direction: column; gap: var(--space-6);">
+
+        <div style="border-bottom: 1px solid var(--color-border-dark); padding-bottom: var(--space-5); display: flex; align-items: baseline; gap: var(--space-6); flex-wrap: wrap;">
+          <span style="font-family: var(--font-sans); font-size: var(--text-xs); color: var(--color-text-subtle); width: 120px; flex-shrink: 0;">Display / 96px</span>
+          <span style="font-family: var(--font-serif); font-size: clamp(3rem, 7vw, 6rem); font-weight: 300; color: var(--color-text-primary); line-height: 1;">Escuta</span>
+        </div>
+
+        <div style="border-bottom: 1px solid var(--color-border-dark); padding-bottom: var(--space-5); display: flex; align-items: baseline; gap: var(--space-6); flex-wrap: wrap;">
+          <span style="font-family: var(--font-sans); font-size: var(--text-xs); color: var(--color-text-subtle); width: 120px; flex-shrink: 0;">H1 / 72px</span>
+          <span style="font-family: var(--font-serif); font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 300; color: var(--color-text-primary); line-height: 1.1;">Bem-estar interior</span>
+        </div>
+
+        <div style="border-bottom: 1px solid var(--color-border-dark); padding-bottom: var(--space-5); display: flex; align-items: baseline; gap: var(--space-6); flex-wrap: wrap;">
+          <span style="font-family: var(--font-sans); font-size: var(--text-xs); color: var(--color-text-subtle); width: 120px; flex-shrink: 0;">H2 / 52px</span>
+          <span style="font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 300; color: var(--color-text-primary); line-height: 1.15;">Seu processo terapêutico</span>
+        </div>
+
+        <div style="border-bottom: 1px solid var(--color-border-dark); padding-bottom: var(--space-5); display: flex; align-items: baseline; gap: var(--space-6); flex-wrap: wrap;">
+          <span style="font-family: var(--font-sans); font-size: var(--text-xs); color: var(--color-text-subtle); width: 120px; flex-shrink: 0;">H3 / 40px</span>
+          <span style="font-family: var(--font-serif); font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 300; color: var(--color-text-primary);">Sobre a Psicanalista</span>
+        </div>
+
+        <div style="border-bottom: 1px solid var(--color-border-dark); padding-bottom: var(--space-5); display: flex; align-items: baseline; gap: var(--space-6); flex-wrap: wrap;">
+          <span style="font-family: var(--font-sans); font-size: var(--text-xs); color: var(--color-text-subtle); width: 120px; flex-shrink: 0;">H4 / 24px</span>
+          <span style="font-family: var(--font-serif); font-size: var(--text-2xl); font-weight: 400; color: var(--color-text-secondary);">Atendimentos presenciais e online</span>
+        </div>
+
+        <div style="border-bottom: 1px solid var(--color-border-dark); padding-bottom: var(--space-5); display: flex; align-items: baseline; gap: var(--space-6); flex-wrap: wrap;">
+          <span style="font-family: var(--font-sans); font-size: var(--text-xs); color: var(--color-text-subtle); width: 120px; flex-shrink: 0;">Corpo / 16px</span>
+          <span style="font-family: var(--font-sans); font-size: var(--text-base); font-weight: 300; color: var(--color-text-muted); line-height: 1.7; max-width: 540px;">
+            A psicanálise é uma prática de cuidado que convida à escuta profunda de si mesmo.
+            Um espaço de acolhimento e transformação, onde palavras ganham sentido.
+          </span>
+        </div>
+
+        <div style="display: flex; align-items: baseline; gap: var(--space-6); flex-wrap: wrap;">
+          <span style="font-family: var(--font-sans); font-size: var(--text-xs); color: var(--color-text-subtle); width: 120px; flex-shrink: 0;">Itálico Ornamental</span>
+          <span style="font-family: var(--font-serif); font-size: var(--text-xl); font-style: italic; font-weight: 300; color: var(--color-accent);">
+            "O inconsciente sabe o que o consciente esqueceu."
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════
+         SEÇÃO: CORES
+    ════════════════════════════════════════════════════ -->
+    <section class="ds-section" id="cores">
+      <div class="ds-section__header">
+        <span class="ds-section__label">02 — Paleta de Cores</span>
+        <h2 class="ds-section__title heading-underline">Identidade Cromática</h2>
+        <p class="ds-section__desc">
+          A paleta ancora-se em tons de terra quente — marrom claro (#b4a497) e marrom escuro (#584335) —
+          evocando acolhimento, solidez e presença. Texto em branco quente comunica refinamento sem frieza.
+        </p>
+      </div>
+
+      <!-- Primárias -->
+      <h3 style="font-family: var(--font-sans); font-size: var(--text-xs); font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-text-subtle); margin-bottom: var(--space-5);">Cores de Fundo</h3>
+      <div class="ds-grid ds-grid--4" style="margin-bottom: var(--space-10);">
+        <div class="color-swatch">
+          <div class="color-swatch__preview" style="background: #b4a497;"></div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__name">Fundo Claro</div>
+            <div class="color-swatch__hex">#b4a497 · --color-bg-light</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch__preview" style="background: #7a6152;"></div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__name">Fundo Médio</div>
+            <div class="color-swatch__hex">#7a6152 · --color-bg-mid</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch__preview" style="background: #584335;"></div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__name">Fundo Escuro</div>
+            <div class="color-swatch__hex">#584335 · --color-bg-dark</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch__preview" style="background: #3e2d23;"></div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__name">Fundo Mais Escuro</div>
+            <div class="color-swatch__hex">#3e2d23 · --color-bg-darkest</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Texto & Acento -->
+      <h3 style="font-family: var(--font-sans); font-size: var(--text-xs); font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-text-subtle); margin-bottom: var(--space-5);">Texto & Acento</h3>
+      <div class="ds-grid ds-grid--4" style="margin-bottom: var(--space-10);">
+        <div class="color-swatch">
+          <div class="color-swatch__preview" style="background: #f5efe8;"></div>
+          <div class="color-swatch__info" style="background: rgba(30,18,11,0.8);">
+            <div class="color-swatch__name">Texto Principal</div>
+            <div class="color-swatch__hex">#f5efe8 · --color-text-primary</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch__preview" style="background: #e8ddd5;"></div>
+          <div class="color-swatch__info" style="background: rgba(30,18,11,0.8);">
+            <div class="color-swatch__name">Texto Secundário</div>
+            <div class="color-swatch__hex">#e8ddd5 · --color-text-secondary</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch__preview" style="background: #c4b5a9;"></div>
+          <div class="color-swatch__info" style="background: rgba(30,18,11,0.8);">
+            <div class="color-swatch__name">Texto Suave</div>
+            <div class="color-swatch__hex">#c4b5a9 · --color-text-muted</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch__preview" style="background: #d4b896;"></div>
+          <div class="color-swatch__info" style="background: rgba(30,18,11,0.8);">
+            <div class="color-swatch__name">Acento Dourado</div>
+            <div class="color-swatch__hex">#d4b896 · --color-accent</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gradientes -->
+      <h3 style="font-family: var(--font-sans); font-size: var(--text-xs); font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-text-subtle); margin-bottom: var(--space-5);">Gradientes</h3>
+      <div class="ds-grid ds-grid--3">
+        <div class="color-swatch">
+          <div class="color-swatch__preview" style="background: linear-gradient(135deg, #b4a497, #584335);"></div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__name">Atmosférico Principal</div>
+            <div class="color-swatch__hex">linear-gradient(135deg, #b4a497 → #584335)</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch__preview" style="background: linear-gradient(180deg, #584335 0%, #3e2d23 100%);"></div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__name">Profundidade</div>
+            <div class="color-swatch__hex">linear-gradient(180deg, #584335 → #3e2d23)</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch__preview" style="background: linear-gradient(90deg, transparent, rgba(212,184,150,0.4), transparent);"></div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__name">Divisor Acento</div>
+            <div class="color-swatch__hex">linear-gradient: transparent → accent → transparent</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════
+         SEÇÃO: ESPAÇAMENTO & BORDAS
+    ════════════════════════════════════════════════════ -->
+    <section class="ds-section" id="espacamento">
+      <div class="ds-section__header">
+        <span class="ds-section__label">03 — Espaçamento & Bordas</span>
+        <h2 class="ds-section__title heading-underline">Ritmo Visual</h2>
+        <p class="ds-section__desc">
+          Sistema de espaçamento em múltiplos de 4px, gerando ritmo visual consistente.
+          Bordas suaves transmitem sofisticação sem rigidez.
+        </p>
+      </div>
+
+      <div class="ds-grid ds-grid--2">
+        <!-- Espaçamento -->
+        <div>
+          <h3 style="font-family: var(--font-sans); font-size: var(--text-xs); font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-text-subtle); margin-bottom: var(--space-6);">Escala de Espaçamento</h3>
+
+          <div class="spacing-row"><div class="spacing-bar" style="width: 4px;"></div><span class="spacing-label">--space-1 · 4px</span></div>
+          <div class="spacing-row"><div class="spacing-bar" style="width: 8px;"></div><span class="spacing-label">--space-2 · 8px</span></div>
+          <div class="spacing-row"><div class="spacing-bar" style="width: 12px;"></div><span class="spacing-label">--space-3 · 12px</span></div>
+          <div class="spacing-row"><div class="spacing-bar" style="width: 16px;"></div><span class="spacing-label">--space-4 · 16px</span></div>
+          <div class="spacing-row"><div class="spacing-bar" style="width: 20px;"></div><span class="spacing-label">--space-5 · 20px</span></div>
+          <div class="spacing-row"><div class="spacing-bar" style="width: 24px;"></div><span class="spacing-label">--space-6 · 24px</span></div>
+          <div class="spacing-row"><div class="spacing-bar" style="width: 32px;"></div><span class="spacing-label">--space-8 · 32px</span></div>
+          <div class="spacing-row"><div class="spacing-bar" style="width: 48px;"></div><span class="spacing-label">--space-12 · 48px</span></div>
+          <div class="spacing-row"><div class="spacing-bar" style="width: 64px;"></div><span class="spacing-label">--space-16 · 64px</span></div>
+          <div class="spacing-row"><div class="spacing-bar" style="width: 96px;"></div><span class="spacing-label">--space-24 · 96px</span></div>
+        </div>
+
+        <!-- Bordas -->
+        <div>
+          <h3 style="font-family: var(--font-sans); font-size: var(--text-xs); font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-text-subtle); margin-bottom: var(--space-6);">Border Radius</h3>
+
+          <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+            <div style="display: flex; align-items: center; gap: var(--space-4);">
+              <div style="width: 60px; height: 36px; background: rgba(212,184,150,0.2); border: 1px solid var(--color-border-accent); border-radius: 4px; flex-shrink: 0;"></div>
+              <span style="font-size: var(--text-xs); color: var(--color-text-muted);">--radius-sm · 4px</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: var(--space-4);">
+              <div style="width: 60px; height: 36px; background: rgba(212,184,150,0.2); border: 1px solid var(--color-border-accent); border-radius: 8px; flex-shrink: 0;"></div>
+              <span style="font-size: var(--text-xs); color: var(--color-text-muted);">--radius-md · 8px</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: var(--space-4);">
+              <div style="width: 60px; height: 36px; background: rgba(212,184,150,0.2); border: 1px solid var(--color-border-accent); border-radius: 12px; flex-shrink: 0;"></div>
+              <span style="font-size: var(--text-xs); color: var(--color-text-muted);">--radius-lg · 12px</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: var(--space-4);">
+              <div style="width: 60px; height: 36px; background: rgba(212,184,150,0.2); border: 1px solid var(--color-border-accent); border-radius: 20px; flex-shrink: 0;"></div>
+              <span style="font-size: var(--text-xs); color: var(--color-text-muted);">--radius-xl · 20px</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: var(--space-4);">
+              <div style="width: 60px; height: 36px; background: rgba(212,184,150,0.2); border: 1px solid var(--color-border-accent); border-radius: 32px; flex-shrink: 0;"></div>
+              <span style="font-size: var(--text-xs); color: var(--color-text-muted);">--radius-2xl · 32px</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: var(--space-4);">
+              <div style="width: 60px; height: 36px; background: rgba(212,184,150,0.2); border: 1px solid var(--color-border-accent); border-radius: 9999px; flex-shrink: 0;"></div>
+              <span style="font-size: var(--text-xs); color: var(--color-text-muted);">--radius-full · 9999px</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════
+         SEÇÃO: COMPONENTES UI
+    ════════════════════════════════════════════════════ -->
+    <section class="ds-section" id="componentes">
+      <div class="ds-section__header">
+        <span class="ds-section__label">04 — Componentes UI</span>
+        <h2 class="ds-section__title heading-underline">Biblioteca de Componentes</h2>
+        <p class="ds-section__desc">
+          Cada componente foi desenhado para reforçar a ambiência de acolhimento e discrição
+          do consultório, com micro-interações suaves e ausência de elementos agressivos.
+        </p>
+      </div>
+
+      <!-- BOTÕES -->
+      <h3 style="font-family: var(--font-sans); font-size: var(--text-xs); font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-text-subtle); margin-bottom: var(--space-6);">Botões</h3>
+      <div class="ds-token-card flashlight-card" style="margin-bottom: var(--space-8);">
+        <div class="ds-demo-row" style="margin-bottom: var(--space-4);">
+          <button class="btn btn-primary" id="btn-primary">Agendar Consulta</button>
+          <button class="btn btn-outline" id="btn-outline">Saiba Mais</button>
+          <button class="btn btn-ghost" id="btn-ghost">Voltar</button>
+          <button class="btn btn-glow" id="btn-glow">Entrar em Contato</button>
+          <button class="btn btn-shimmer" id="btn-shimmer">Acompanhe</button>
+        </div>
+        <div class="ds-demo-row">
+          <button class="btn btn-primary btn-sm">Agendar</button>
+          <button class="btn btn-outline btn-lg">Consulta Online</button>
+        </div>
+      </div>
+
+      <!-- BADGES -->
+      <h3 style="font-family: var(--font-sans); font-size: var(--text-xs); font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-text-subtle); margin-bottom: var(--space-6);">Badges & Tags</h3>
+      <div class="ds-token-card" style="margin-bottom: var(--space-8);">
+        <div class="ds-demo-row">
+          <span class="badge badge-subtle">CRP 00/000000</span>
+          <span class="badge badge-accent">
+            <span class="badge-dot"></span>
+            Atendendo Online
+          </span>
+          <span class="badge badge-accent">
+            <span class="badge-ping">
+              <span class="badge-ping__inner"></span>
+              <span class="badge-ping__dot"></span>
+            </span>
+            Agenda Aberta
+          </span>
+          <span class="badge badge-subtle">
+            <span class="badge-dot" style="background: var(--color-accent);"></span>
+            Presencial
+          </span>
+        </div>
+      </div>
+
+      <!-- CARDS -->
+      <h3 style="font-family: var(--font-sans); font-size: var(--text-xs); font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-text-subtle); margin-bottom: var(--space-6);">Cards</h3>
+      <div class="ds-grid ds-grid--3" style="margin-bottom: var(--space-8);">
+
+        <div class="card flashlight-card" id="card-1">
+          <div class="card__icon">✦</div>
+          <div class="card__title">Psicanálise</div>
+          <p class="card__body">Um espaço de escuta dedicado ao seu processo interior, com ética e acolhimento.</p>
+        </div>
+
+        <div class="card flashlight-card" id="card-2">
+          <div class="card__icon">◎</div>
+          <div class="card__title">Atendimento Online</div>
+          <p class="card__body">Sessões realizadas com privacidade e cuidado, no conforto do seu espaço.</p>
+        </div>
+
+        <div class="card flashlight-card" id="card-3">
+          <div class="card__icon">◈</div>
+          <div class="card__title">Supervisão</div>
+          <p class="card__body">Espaço de formação continuada para analistas e estudantes de psicanálise.</p>
+        </div>
+      </div>
+
+      <!-- FORMULÁRIO -->
+      <h3 style="font-family: var(--font-sans); font-size: var(--text-xs); font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-text-subtle); margin-bottom: var(--space-6);">Formulário de Contato</h3>
+      <div class="ds-token-card ds-grid ds-grid--2" style="margin-bottom: var(--space-8);">
+        <div class="ds-demo-col">
+          <div class="form-group">
+            <label class="form-label" for="nome">Nome</label>
+            <input class="form-input" id="nome" type="text" placeholder="Seu nome completo" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">E-mail</label>
+            <input class="form-input" id="email" type="email" placeholder="seu@email.com" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="telefone">Telefone</label>
+            <input class="form-input" id="telefone" type="tel" placeholder="(00) 00000-0000" />
+          </div>
+        </div>
+        <div class="ds-demo-col">
+          <div class="form-group" style="flex: 1;">
+            <label class="form-label" for="mensagem">Mensagem</label>
+            <textarea class="form-textarea" id="mensagem" placeholder="Como posso ajudar?" style="flex: 1; min-height: 140px;"></textarea>
+          </div>
+          <button class="btn btn-primary" style="align-self: flex-start;">Enviar Mensagem</button>
+        </div>
+      </div>
+
+      <!-- NAV PILL -->
+      <h3 style="font-family: var(--font-sans); font-size: var(--text-xs); font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-text-subtle); margin-bottom: var(--space-6);">Navegação Pill</h3>
+      <div class="ds-token-card" style="margin-bottom: var(--space-8);">
+        <nav class="nav-pill" aria-label="Demonstração de navegação pill">
+          <button class="nav-pill__item active" id="nav-inicio">Início</button>
+          <button class="nav-pill__item" id="nav-sobre">Sobre</button>
+          <button class="nav-pill__item" id="nav-servicos">Serviços</button>
+          <button class="nav-pill__item" id="nav-contato">Contato</button>
+        </nav>
+      </div>
+
+      <!-- QUOTE -->
+      <h3 style="font-family: var(--font-sans); font-size: var(--text-xs); font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-text-subtle); margin-bottom: var(--space-6);">Citação / Depoimento</h3>
+      <div style="margin-bottom: var(--space-8);">
+        <div class="quote-block">
+          <p class="quote-block__text">
+            "A psicanálise oferece ao sujeito a possibilidade de encontrar-se com
+            aquilo que o constitui, além da consciência."
+          </p>
+          <div class="quote-block__author">— Sigmund Freud</div>
+        </div>
+      </div>
+
+      <!-- AVATAR -->
+      <h3 style="font-family: var(--font-sans); font-size: var(--text-xs); font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-text-subtle); margin-bottom: var(--space-6);">Avatares</h3>
+      <div class="ds-token-card" style="margin-bottom: var(--space-8);">
+        <div class="ds-demo-row" style="align-items: center;">
+          <div class="avatar avatar-sm">R</div>
+          <div class="avatar avatar-md">R</div>
+          <div class="avatar avatar-lg">R</div>
+          <div class="avatar avatar-xl">RB</div>
+        </div>
+      </div>
+
+      <!-- TOOLTIP -->
+      <h3 style="font-family: var(--font-sans); font-size: var(--text-xs); font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-text-subtle); margin-bottom: var(--space-6);">Tooltip</h3>
+      <div class="ds-token-card" style="margin-bottom: var(--space-8);">
+        <div class="ds-demo-row" style="padding: var(--space-8) 0;">
+          <div class="tooltip-wrap">
+            <button class="btn btn-outline btn-sm">Passe o mouse aqui</button>
+            <span class="tooltip">CRP 00/000000 — Rosiane Barcellos</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACCORDION (FAQ) -->
+      <h3 style="font-family: var(--font-sans); font-size: var(--text-xs); font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-text-subtle); margin-bottom: var(--space-6);">Accordion (FAQ)</h3>
+      <div class="accordion" style="margin-bottom: var(--space-8);">
+        <div class="accordion__item open" id="acc-1">
+          <button class="accordion__trigger" onclick="toggleAccordion('acc-1')" aria-expanded="true">
+            O que é a psicanálise?
+            <svg class="accordion__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="accordion__body">
+            <div class="accordion__content">
+              A psicanálise é uma prática clínica e teoria do sujeito fundada por Sigmund Freud,
+              que investiga o inconsciente e os processos psíquicos que influenciam o comportamento e o sofrimento humano.
+            </div>
+          </div>
+        </div>
+        <div class="accordion__item" id="acc-2">
+          <button class="accordion__trigger" onclick="toggleAccordion('acc-2')" aria-expanded="false">
+            Como é o processo de atendimento?
+            <svg class="accordion__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="accordion__body">
+            <div class="accordion__content">
+              O primeiro contato é uma entrevista de acolhimento, onde conversamos sobre sua demanda
+              e definimos o enquadre do tratamento — frequência,  horário e modalidade (presencial ou online).
+            </div>
+          </div>
+        </div>
+        <div class="accordion__item" id="acc-3">
+          <button class="accordion__trigger" onclick="toggleAccordion('acc-3')" aria-expanded="false">
+            Qual a duração de cada sessão?
+            <svg class="accordion__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="accordion__body">
+            <div class="accordion__content">
+              As sessões têm duração variável, seguindo o tempo clínico do sujeito — geralmente entre 45 e 50 minutos,
+              com frequência semanal ou quinzenal conforme indicação terapêutica.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIVISORES -->
+      <h3 style="font-family: var(--font-sans); font-size: var(--text-xs); font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-text-subtle); margin-bottom: var(--space-6);">Divisores</h3>
+      <div class="ds-token-card" style="margin-bottom: var(--space-4);">
+        <div class="divider" style="margin: var(--space-4) 0;"></div>
+        <span class="ds-code">.divider</span>
+        <div class="divider divider-accent" style="margin: var(--space-4) 0;"></div>
+        <span class="ds-code">.divider-accent</span>
+      </div>
+
+      <!-- MODAL DEMO -->
+      <h3 style="font-family: var(--font-sans); font-size: var(--text-xs); font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-text-subtle); margin: var(--space-8) 0 var(--space-6);">Modal / Dialog</h3>
+      <div class="ds-token-card" style="margin-bottom: var(--space-8);">
+        <button class="btn btn-outline" onclick="openModal()">Abrir Modal</button>
+      </div>
+
+      <!-- LOADING -->
+      <h3 style="font-family: var(--font-sans); font-size: var(--text-xs); font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-text-subtle); margin-bottom: var(--space-6);">Estado de Carregamento</h3>
+      <div class="ds-token-card" style="margin-bottom: var(--space-8);">
+        <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+          <div class="loading-shimmer" style="height: 18px; width: 60%;"></div>
+          <div class="loading-shimmer" style="height: 14px; width: 80%;"></div>
+          <div class="loading-shimmer" style="height: 14px; width: 45%;"></div>
+        </div>
+      </div>
+
+      <!-- HERO DEMO MOCKUP -->
+      <h3 style="font-family: var(--font-sans); font-size: var(--text-xs); font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-text-subtle); margin-bottom: var(--space-6);">Hero Section (Mockup)</h3>
+      <div class="hero-demo flashlight-card">
+        <div class="hero-demo__ambient"></div>
+        <div style="position: relative; z-index: 1;">
+          <span class="badge badge-accent" style="margin-bottom: var(--space-5);">
+            <span class="badge-ping">
+              <span class="badge-ping__inner"></span>
+              <span class="badge-ping__dot"></span>
+            </span>
+            Agenda aberta para 2026
+          </span>
+          <h2 class="hero-demo__title">
+            Um espaço para<br/>
+            <span style="font-style: italic; color: var(--color-accent);">a sua fala.</span>
+          </h2>
+          <p class="hero-demo__subtitle">
+            Atendimento psicanalítico presencial e online.<br/>
+            Escuta ética, cuidadosa e comprometida com o seu bem-estar.
+          </p>
+          <div class="hero-demo__actions">
+            <button class="btn btn-primary btn-lg">Agendar Consulta</button>
+            <button class="btn btn-outline btn-lg">Conhecer a Psicanalista</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════
+         SEÇÃO: ANIMAÇÕES & EFEITOS
+    ════════════════════════════════════════════════════ -->
+    <section class="ds-section" id="animacoes">
+      <div class="ds-section__header">
+        <span class="ds-section__label">05 — Animações & Efeitos</span>
+        <h2 class="ds-section__title heading-underline">Motion & Interações</h2>
+        <p class="ds-section__desc">
+          As animações devem ser sutis e respiradas — nunca chamativas. Movimentos lentos e suaves
+          reforçam a sensação de calma e seriedade do consultório.
+        </p>
+      </div>
+
+      <div class="ds-grid ds-grid--2">
+        <!-- Tabela de animações -->
+        <div class="ds-token-card">
+          <h4 style="font-family: var(--font-serif); font-size: var(--text-lg); font-weight: 300; color: var(--color-text-primary); margin-bottom: var(--space-5);">Keyframes disponíveis</h4>
+          <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--color-border-dark); padding-bottom: var(--space-2);">
+              <span style="font-size: var(--text-xs); color: var(--color-text-secondary);">revealUp</span>
+              <span style="font-size: var(--text-xs); color: var(--color-text-subtle);">Entrada suave para cima + blur</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--color-border-dark); padding-bottom: var(--space-2);">
+              <span style="font-size: var(--text-xs); color: var(--color-text-secondary);">fadeIn</span>
+              <span style="font-size: var(--text-xs); color: var(--color-text-subtle);">Fade simples de opacidade</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--color-border-dark); padding-bottom: var(--space-2);">
+              <span style="font-size: var(--text-xs); color: var(--color-text-secondary);">subtlePulse</span>
+              <span style="font-size: var(--text-xs); color: var(--color-text-subtle);">Pulse de escala (background)</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--color-border-dark); padding-bottom: var(--space-2);">
+              <span style="font-size: var(--text-xs); color: var(--color-text-secondary);">driftH</span>
+              <span style="font-size: var(--text-xs); color: var(--color-text-subtle);">Deriva horizontal (background)</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--color-border-dark); padding-bottom: var(--space-2);">
+              <span style="font-size: var(--text-xs); color: var(--color-text-secondary);">slowRotate</span>
+              <span style="font-size: var(--text-xs); color: var(--color-text-subtle);">Rotação lenta (spinner/border)</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--color-border-dark); padding-bottom: var(--space-2);">
+              <span style="font-size: var(--text-xs); color: var(--color-text-secondary);">shimmer</span>
+              <span style="font-size: var(--text-xs); color: var(--color-text-subtle);">Loading shimmer sweep</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--color-border-dark); padding-bottom: var(--space-2);">
+              <span style="font-size: var(--text-xs); color: var(--color-text-secondary);">wordReveal</span>
+              <span style="font-size: var(--text-xs); color: var(--color-text-subtle);">Reveal palavra a palavra</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: var(--text-xs); color: var(--color-text-secondary);">ping</span>
+              <span style="font-size: var(--text-xs); color: var(--color-text-subtle);">Indicador de status ativo</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Classes CSS de animação -->
+        <div class="ds-token-card">
+          <h4 style="font-family: var(--font-serif); font-size: var(--text-lg); font-weight: 300; color: var(--color-text-primary); margin-bottom: var(--space-5);">Classes utilitárias</h4>
+          <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+            <div>
+              <span class="ds-code">.animate-reveal</span>
+              <p style="font-size: var(--text-xs); color: var(--color-text-subtle); margin-top: var(--space-1);">revealUp 1s cubic-bezier(0.16,1,0.3,1)</p>
+            </div>
+            <div>
+              <span class="ds-code">.animate-word</span>
+              <p style="font-size: var(--text-xs); color: var(--color-text-subtle); margin-top: var(--space-1);">wordReveal 1.4s — aplicar em cada palavra do H1</p>
+            </div>
+            <div>
+              <span class="ds-code">.animate-fade</span>
+              <p style="font-size: var(--text-xs); color: var(--color-text-subtle); margin-top: var(--space-1);">fadeIn 0.8s ease-out</p>
+            </div>
+            <div>
+              <span class="ds-code">.animate-on-scroll</span>
+              <p style="font-size: var(--text-xs); color: var(--color-text-subtle); margin-top: var(--space-1);">Pausa animação; JS ativa via IntersectionObserver</p>
+            </div>
+            <div>
+              <span class="ds-code">.delay-{0|100|200|300|400|500|600|800|900|1000}</span>
+              <p style="font-size: var(--text-xs); color: var(--color-text-subtle); margin-top: var(--space-1);">animation-delay em ms</p>
+            </div>
+            <div>
+              <span class="ds-code">.glass</span>
+              <p style="font-size: var(--text-xs); color: var(--color-text-subtle); margin-top: var(--space-1);">Glassmorphism escuro + backdrop-filter</p>
+            </div>
+            <div>
+              <span class="ds-code">.flashlight-card</span>
+              <p style="font-size: var(--text-xs); color: var(--color-text-subtle); margin-top: var(--space-1);">Efeito de luz seguindo o mouse via CSS var</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Transições -->
+      <div class="ds-token-card" style="margin-top: var(--space-6);">
+        <h4 style="font-family: var(--font-serif); font-size: var(--text-lg); font-weight: 300; color: var(--color-text-primary); margin-bottom: var(--space-5);">Duração das Transições</h4>
+        <div class="ds-demo-row">
+          <div>
+            <button class="btn btn-outline btn-sm" style="transition: all 150ms cubic-bezier(0.4,0,0.2,1); margin-bottom: var(--space-2);">Fast · 150ms</button>
+            <p style="font-size: var(--text-xs); color: var(--color-text-subtle);">--transition-fast<br>hover states, focus</p>
+          </div>
+          <div>
+            <button class="btn btn-outline btn-sm" style="transition: all 300ms cubic-bezier(0.4,0,0.2,1); margin-bottom: var(--space-2);">Normal · 300ms</button>
+            <p style="font-size: var(--text-xs); color: var(--color-text-subtle);">--transition-normal<br>cards, nav, cores</p>
+          </div>
+          <div>
+            <button class="btn btn-outline btn-sm" style="transition: all 600ms cubic-bezier(0.16,1,0.3,1); margin-bottom: var(--space-2);">Slow · 600ms</button>
+            <p style="font-size: var(--text-xs); color: var(--color-text-subtle);">--transition-slow<br>modal, accordion, reveal</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════
+         RODAPÉ DO DS
+    ════════════════════════════════════════════════════ -->
+    <footer style="padding: var(--space-16) 0 var(--space-24); text-align: center;">
+      <div class="divider divider-accent" style="margin-bottom: var(--space-10);"></div>
+      <p style="font-family: var(--font-serif); font-style: italic; font-size: var(--text-xl); color: var(--color-text-muted); margin-bottom: var(--space-4);">
+        "Onde há uma história, há uma cura possível."
+      </p>
+      <p style="font-family: var(--font-sans); font-size: var(--text-xs); color: var(--color-text-subtle); letter-spacing: 0.12em; text-transform: uppercase;">
+        Design System · Rosiane Barcellos · Psicanalista · ds1.html v1.0
+      </p>
+    </footer>
+  </main>
+
+  <!-- ══════════════════════════════════════════════════════
+       MODAL (DOM)
+  ══════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title" onclick="if(event.target===this)closeModal()">
+    <div class="modal">
+      <h3 id="modal-title" style="font-family: var(--font-serif); font-size: var(--text-2xl); font-weight: 300; color: var(--color-text-primary); margin-bottom: var(--space-3);">
+        Agendar Consulta
+      </h3>
+      <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-6); line-height: 1.7;">
+        Entre em contato para agendar sua primeira sessão. O atendimento é realizado 
+        com toda a discrição e ética profissional.
+      </p>
+      <div class="form-group" style="margin-bottom: var(--space-4);">
+        <label class="form-label" for="modal-nome">Seu nome</label>
+        <input class="form-input" id="modal-nome" type="text" placeholder="Como posso chamá-lo?" />
+      </div>
+      <div class="form-group" style="margin-bottom: var(--space-6);">
+        <label class="form-label" for="modal-contato">E-mail ou WhatsApp</label>
+        <input class="form-input" id="modal-contato" type="text" placeholder="Prefiro contato por..." />
+      </div>
+      <div style="display: flex; gap: var(--space-3); justify-content: flex-end;">
+        <button class="btn btn-ghost" onclick="closeModal()">Cancelar</button>
+        <button class="btn btn-primary" onclick="closeModal()">Enviar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       JAVASCRIPT
+  ══════════════════════════════════════════════════════ -->
+  <script>
+    // ── 1. IntersectionObserver – animar ao rolar ──────────────────────────
+    (function () {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in-view');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+      document.querySelectorAll('.animate-on-scroll').forEach((el) => io.observe(el));
+    })();
+
+    // ── 2. Flashlight / Mouse Glow nos cards ──────────────────────────────
+    document.querySelectorAll('.flashlight-card').forEach((card) => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mouse-x', (e.clientX - rect.left) + 'px');
+        card.style.setProperty('--mouse-y', (e.clientY - rect.top) + 'px');
+      });
+    });
+
+    // ── 3. Nav pill – trocar item ativo ───────────────────────────────────
+    document.querySelectorAll('.nav-pill__item').forEach((item) => {
+      item.addEventListener('click', () => {
+        document.querySelectorAll('.nav-pill__item').forEach((i) => i.classList.remove('active'));
+        item.classList.add('active');
+      });
+    });
+
+    // ── 4. Accordion ──────────────────────────────────────────────────────
+    function toggleAccordion(id) {
+      const item = document.getElementById(id);
+      const isOpen = item.classList.contains('open');
+
+      // Fecha todos
+      document.querySelectorAll('.accordion__item').forEach((i) => {
+        i.classList.remove('open');
+        i.querySelector('.accordion__trigger').setAttribute('aria-expanded', 'false');
+      });
+
+      // Abre o clicado (se estava fechado)
+      if (!isOpen) {
+        item.classList.add('open');
+        item.querySelector('.accordion__trigger').setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    // ── 5. Modal ──────────────────────────────────────────────────────────
+    function openModal() {
+      document.getElementById('modal-overlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('modal-overlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Fecha modal com Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // ── 6. Navbar: adiciona classe ao rolar ───────────────────────────────
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('ds-nav');
+      if (window.scrollY > 40) {
+        nav.style.boxShadow = '0 8px 32px rgba(30,18,11,0.4)';
+      } else {
+        nav.style.boxShadow = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
