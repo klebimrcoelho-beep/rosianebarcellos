@@ -1976,34 +1976,56 @@
 
     @media (max-width: 600px) {
       .hero__title {
-        font-size: clamp(1.8rem, 7vw, 2.5rem);
+        /* Tamanho reduzido para caber perfeitamente na linha sem quebrar palavras */
+        font-size: clamp(1.4rem, 5.5vw, 1.8rem);
+        line-height: 1.25;
       }
 
       .btn {
-        padding: var(--space-2) var(--space-6);
+        padding: var(--space-2) var(--space-5);
         font-size: var(--text-sm);
       }
 
       .btn-lg {
-        padding: var(--space-3) var(--space-6);
+        padding: var(--space-3) var(--space-4);
         font-size: var(--text-sm);
       }
       
       .btn-shimmer__inner {
-        padding: var(--space-3) var(--space-6);
-        font-size: var(--text-sm);
+        padding: var(--space-3) var(--space-5);
+        font-size: var(--text-xs);
       }
 
-      /* Melhoria de Performance: desabilita blurs pesados animados em celulares que causam lag na rolagem */
+      /* Melhoria Absoluta de Performance Mobile: desabilita blurs pesados, filtros de vidro e grids que matam as placas de vídeo de celulares */
       .site-bg__glow,
       .site-bg__streak,
       .sobre-orb-1,
       .sobre-orb-2,
       .sobre-interference,
       .sobre-interference-reverse,
-      .abordagem-glow {
+      .abordagem-glow,
+      .abordagem-bg-grid,
+      .sessoes-glow-bg,
+      .hero__ambient {
         display: none !important;
         animation: none !important;
+      }
+
+      .card, .quote-block, .btn-shimmer__inner, .nav.scrolled {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background-color: rgba(45, 30, 20, 0.95); /* Cor sólida como fallback de vidro */
+      }
+      
+      .about-photo__frame {
+        animation: none !important; /* Animando box shadow em celular trava a página */
+        box-shadow: none !important;
+        border: 1px solid rgba(212, 184, 150, 0.2);
+      }
+      
+      .transition-beam {
+        animation: none !important;
+        box-shadow: none !important;
       }
 
       .section {
