@@ -1976,7 +1976,34 @@
 
     @media (max-width: 600px) {
       .hero__title {
-        font-size: clamp(2.2rem, 8vw, 3.5rem);
+        font-size: clamp(1.8rem, 7vw, 2.5rem);
+      }
+
+      .btn {
+        padding: var(--space-2) var(--space-6);
+        font-size: var(--text-sm);
+      }
+
+      .btn-lg {
+        padding: var(--space-3) var(--space-6);
+        font-size: var(--text-sm);
+      }
+      
+      .btn-shimmer__inner {
+        padding: var(--space-3) var(--space-6);
+        font-size: var(--text-sm);
+      }
+
+      /* Melhoria de Performance: desabilita blurs pesados animados em celulares que causam lag na rolagem */
+      .site-bg__glow,
+      .site-bg__streak,
+      .sobre-orb-1,
+      .sobre-orb-2,
+      .sobre-interference,
+      .sobre-interference-reverse,
+      .abordagem-glow {
+        display: none !important;
+        animation: none !important;
       }
 
       .section {
