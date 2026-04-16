@@ -1980,6 +1980,12 @@
         font-size: clamp(1.4rem, 5.5vw, 1.8rem);
         line-height: 1.25;
       }
+      
+      .hero__badge {
+        font-size: 0.55rem;
+        padding: 4px 10px;
+        letter-spacing: 0.08em;
+      }
 
       .btn {
         padding: var(--space-2) var(--space-5);
